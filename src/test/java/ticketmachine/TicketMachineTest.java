@@ -1,15 +1,17 @@
 package ticketmachine;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class TicketMachineTest {
 	private static final int PRICE = 50; // Une constante
 
 	private TicketMachine machine; // l'objet à tester
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		machine = new TicketMachine(PRICE); // On initialise l'objet à tester
 	}
@@ -19,7 +21,7 @@ public class TicketMachineTest {
 	// S1 : le prix affiché correspond à l’initialisation
 	public void priceIsCorrectlyInitialized() {
 		// Paramètres : message si erreur, valeur attendue, valeur réelle
-		assertEquals("Initialisation incorrecte du prix", PRICE, machine.getPrice());
+		assertEquals(PRICE, machine.getPrice(), "Initialisation incorrecte du prix");
 	}
 
 	@Test
@@ -27,7 +29,15 @@ public class TicketMachineTest {
 	public void insertMoneyChangesBalance() {
 		machine.insertMoney(10);
 		machine.insertMoney(20);
-		assertEquals("La balance n'est pas correctement mise à jour", 10 + 20, machine.getBalance()); // Les montants ont été correctement additionnés               
+                // Les montants ont été correctement additionnés  
+		assertEquals(10 + 20, machine.getBalance(), "La balance n'est pas correctement mise à jour");              
 	}
 
+	@Test
+	// S3 : si on n'a pas mis assez d'argent on n'imprime pas
+	public void doNotPrint() {
+		// On met pas assez d'argent
+		machine.insertMoney(PRICE - 1);
+		assertFalse(machine.printTicket(), "On ne doit pas imprimer");
+	}
 }
