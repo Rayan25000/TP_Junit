@@ -78,7 +78,7 @@ public class TicketMachine {
 	}
 
 	/**
-	 * Print a ticket. Update the total collected and reduce the balance to zero.
+	 * Print a ticket. Update the total collected and reduce the balance 
 	 *
 	 * @return vrai si le ticket a été imprimé, faux sinon
 	 */

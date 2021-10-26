@@ -20,7 +20,7 @@ public class TicketMachineTest {
 	// On vérifie que le prix affiché correspond au paramètre passé lors de l'initialisation
 	// S1 : le prix affiché correspond à l’initialisation
 	public void priceIsCorrectlyInitialized() {
-		// Paramètres : message si erreur, valeur attendue, valeur réelle
+		// Paramètres : valeur attendue, valeur effective, message si erreur
 		assertEquals(PRICE, machine.getPrice(), "Initialisation incorrecte du prix");
 	}
 
@@ -31,13 +31,5 @@ public class TicketMachineTest {
 		machine.insertMoney(20);
                 // Les montants ont été correctement additionnés  
 		assertEquals(10 + 20, machine.getBalance(), "La balance n'est pas correctement mise à jour");              
-	}
-
-	@Test
-	// S3 : si on n'a pas mis assez d'argent on n'imprime pas
-	public void doNotPrint() {
-		// On met pas assez d'argent
-		machine.insertMoney(PRICE - 1);
-		assertFalse(machine.printTicket(), "On ne doit pas imprimer");
 	}
 }
