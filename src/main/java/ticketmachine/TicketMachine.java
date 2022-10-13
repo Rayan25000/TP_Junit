@@ -17,13 +17,12 @@ public class TicketMachine {
 	private int total;
 
 	/**
-	 * Create a machine that issues tickets of the given price. Note that the price must be greater than zero, and there are
-	 * no checks to ensure this.
+	 * Create a machine that issues tickets of the given price.
 	 *
-	 * @param ticketCost the price of a ticket
+	 * @param ticketCost the price of a ticket, >=0
 	 */
 	public TicketMachine(int ticketCost) {
-		// Test de validite du parametre
+		// Test de validité du paramètre
 		if (ticketCost <= 0) {
 			throw new IllegalArgumentException("Ticket price must be positive");
 		}

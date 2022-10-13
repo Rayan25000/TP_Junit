@@ -18,7 +18,7 @@ public class TicketMachineTest {
 
 	@Test
 	// On vérifie que le prix affiché correspond au paramètre passé lors de l'initialisation
-	// S1 : le prix affiché correspond à l’initialisation
+	// S1 : le prix affiché correspond à l’initialisation.
 	public void priceIsCorrectlyInitialized() {
 		// Paramètres : valeur attendue, valeur effective, message si erreur
 		assertEquals(PRICE, machine.getPrice(), "Initialisation incorrecte du prix");
